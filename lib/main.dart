@@ -1,31 +1,29 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:quizics/quizics_app.dart';
 import 'package:flutter/material.dart';
-import 'package:quizics/lessonListPage.dart';
-import 'package:quizics/questionPage.dart';
-import 'package:quizics/subjectListPage.dart';
-import 'package:quizics/homePage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'amplifyconfiguration.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await _configureAmplify();
+  } on AmplifyAlreadyConfiguredException {
+    debugPrint('Amplify configuration failed.');
+  }
+
+  runApp(
+    const ProviderScope(
+      child: QuizicsApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp( 
-      title: 'Quizics',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 187, 2, 79)),
-        useMaterial3: true,
-      ),
-      initialRoute: '/home',
-      routes: {
-        '/home': (context) => const HomePage(),
-        '/Subjects': (context) => const SubjectListPage(),
-        '/Lessons' : (context) => const LessonListPage(),
-        '/Question': (context) => const QuestionPage(),
-      }
-    );
-  }
+Future<void> _configureAmplify() async {
+  await Amplify.addPlugins([
+    AmplifyAuthCognito(),
+  ]);
+  await Amplify.configure(amplifyconfig);
 }

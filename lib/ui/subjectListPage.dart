@@ -1,11 +1,11 @@
-export 'package:quizics/lessonListPage.dart' show LessonListPage;
-import 'package:quizics/pageListArguments.dart' show PageListArguments;
+export 'package:quizics/ui/subjectListPage.dart' show SubjectListPage;
+import 'package:quizics/ui/pageListArguments.dart' show PageListArguments;
 import 'package:flutter/material.dart';
-import 'package:quizics/columnDisplayer.dart';
+import 'package:quizics/ui/columnDisplayer.dart';
 
-class LessonListPage extends StatelessWidget {
-  static List<String> titleList = ["Lesson 1", "Lesson 2", "Lesson 3"];
-  const LessonListPage({super.key});
+class SubjectListPage extends StatelessWidget {
+  static List<String> titleList = ["Math", "Physics", "Computer Science"];
+  const SubjectListPage({super.key});
   @override
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)?.settings.arguments as PageListArguments?;
@@ -17,8 +17,8 @@ class LessonListPage extends StatelessWidget {
       ),
       body: ColumnDisplayer(
         titleList: titleList,
-        route: "/Lessons",
-        subRoute: "/Question",
+        route: "/Subjects",
+        subRoute: "/Lessons",
         ),
       );
   }

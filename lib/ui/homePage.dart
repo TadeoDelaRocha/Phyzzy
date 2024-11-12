@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizics/pageListArguments.dart' show PageListArguments;
+import 'package:quizics/ui/pageListArguments.dart' show PageListArguments;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

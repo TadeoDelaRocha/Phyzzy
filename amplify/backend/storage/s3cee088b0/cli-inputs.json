@@ -1,0 +1,16 @@
+{
+  "resourceName": "s3cee088b0",
+  "policyUUID": "cee088b0",
+  "bucketName": "quizicsstorage",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
