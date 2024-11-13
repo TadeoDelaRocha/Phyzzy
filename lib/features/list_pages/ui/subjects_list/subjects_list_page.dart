@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:quizics/common/utils/colors.dart' as constants;
+import 'package:quizics/features/list_pages/controller/subjects_list_controller.dart';
+import 'package:quizics/features/list_pages/ui/subjects_listview/subjects_list_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SubjectsListPage extends StatelessWidget {
+class SubjectsListPage extends ConsumerWidget {
   const SubjectsListPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final subjectsListValue = ref.watch(subjectsListControllerProvider);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -16,8 +20,8 @@ class SubjectsListPage extends StatelessWidget {
         ),
         backgroundColor: const Color(constants.primaryColorDark),
       ),
-      body: const Center(
-        child: Text('Subjects List'),
+      body: SubjectsListView(
+        subjectsList: subjectsListValue,
       ),
     );
   }

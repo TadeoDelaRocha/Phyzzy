@@ -15,7 +15,7 @@ type Question @model @auth(rules: [
   imageKey: String
   questionNum: Int!
   lessonId: ID!
-  lesson: Lesson @belongsTo(fields: ["lessonId"])
+  lesson: Lesson @belongsTo(fields: ["id"])
 }
 
 type Lesson @model @auth(rules: [
@@ -26,7 +26,7 @@ type Lesson @model @auth(rules: [
     description: String!
     title: String!
     subjectId: ID!
-    subject: Subject @belongsTo(fields: ["subjectId"])
+    subject: Subject @belongsTo(fields: ["id"])
     questions: [Question] @hasMany(indexName: "byLesson", fields: ["id"])
 }
 

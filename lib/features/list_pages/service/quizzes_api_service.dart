@@ -30,11 +30,49 @@ class QuizzesAPIService {
     }
   }
 
+  Future<List<Lesson>> getLessonsList(String subjectId) async {
+    try {
+      String query = '''
+        query GetLessonsList(\$subjectId: ID!){
+          getSubject(id: \$subjectId){
+            lessons {
+              items{
+                id
+                title
+                description
+              }
+            }
+          }
+        }
+      ''';
+
+      final request = GraphQLRequest(
+        document: query,
+        variables: {"subjectId": subjectId}, 
+      );
+
+      final response = await Amplify.API.query(request:request).response;
+      var data = response.data;
+
+      if (data == null) {
+        safePrint('getLessonsList errors: ${response.errors}');
+        return const [];
+      }
+      return data.lessons.items
+          .map((e) => e as Subject)
+          .toList();
+
+    } catch (e) {
+      safePrint('Error getting lessons List: $e');
+      return [];
+    }
+  }
+
   Future<Lesson?> getLessonById(String lessonId) async {
     try {
       String query = '''
         query GetLessontWithQuestions(\$lessonId: ID!){
-          getSubject(id: \$lessonId) {
+          getLesson(id: \$lessonId) {
             id
             title
             description

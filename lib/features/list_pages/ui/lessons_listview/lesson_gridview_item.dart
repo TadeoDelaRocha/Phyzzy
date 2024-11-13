@@ -1,16 +1,16 @@
 import 'package:quizics/common/navigation/router/routes.dart';
-import 'package:quizics/features/list_pages/ui/subjects_listview/subject_gridview_item_card.dart';
+import 'package:quizics/features/list_pages/ui/lessons_listview/lesson_gridview_item_card.dart';
 import 'package:quizics/models/ModelProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SubjectGridViewItem extends StatelessWidget {
-  const SubjectGridViewItem({
-    required this.subject,
+class LessonGridViewItem extends StatelessWidget {
+  const LessonGridViewItem({
+    required this.lesson,
     super.key,
   });
 
-  final Subject subject;
+  final Lesson lesson;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,13 @@ class SubjectGridViewItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       onTap: () {
         context.goNamed(
-          AppRoute.lessons.name,
-          pathParameters: {'subjectId': subject.id},
-          extra: subject,
+          AppRoute.question.name,
+          pathParameters: {'lessonId': lesson.id},
+          extra: lesson,
         );
       },
-      child: SubjectGridViewItemCard(
-        subject: subject,
+      child: LessonGridViewItemCard(
+        lesson: lesson,
       ),
     );
   }

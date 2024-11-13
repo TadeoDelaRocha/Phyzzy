@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:amplify_api/amplify_api.dart';
 import 'package:quizics/models/ModelProvider.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 
 import 'amplifyconfiguration.dart';
 
@@ -27,6 +28,7 @@ Future<void> _configureAmplify() async {
   await Amplify.addPlugins([
     AmplifyAuthCognito(),
     AmplifyAPI(modelProvider: ModelProvider.instance),
+      AmplifyStorageS3()
   ]);
   await Amplify.configure(amplifyconfig);
 }

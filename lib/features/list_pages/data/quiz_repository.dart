@@ -5,8 +5,8 @@ import 'package:quizics/models/Subject.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final quizRepositoryProvider = Provider<QuizRepository>((ref) {
-  final tripsAPIService = ref.read(quizzesAPIServiceProvider);
-  return QuizRepository(tripsAPIService);
+  final quizzesAPIService = ref.read(quizzesAPIServiceProvider);
+  return QuizRepository(quizzesAPIService);
 });
 
 class QuizRepository {
@@ -20,6 +20,10 @@ class QuizRepository {
 
   Future<Lesson?> getLessonById(String lessonId){
     return quizzesAPIService.getLessonById(lessonId);
+  }
+
+  Future<List<Lesson>> getLessonsList(String subjectId){
+    return quizzesAPIService.getLessonsList(subjectId);
   }
 
   Future<Subject?> getSubjectById(String subjectId){
