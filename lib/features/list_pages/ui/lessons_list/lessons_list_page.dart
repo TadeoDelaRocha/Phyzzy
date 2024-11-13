@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizics/common/utils/colors.dart' as constants;
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class LessonsListPage extends StatelessWidget {
+  const LessonsListPage({
     super.key,
   });
 
@@ -12,17 +12,12 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Quizics',
+          'Lessons',
         ),
         backgroundColor: const Color(constants.primaryColorDark),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color(constants.primaryColorDark),
-        child: const Icon(Icons.add),
-      ),
       body: const Center(
-        child: Text('Subjects List'),
+        child: Text('Lessons List'),
       ),
     );
   }

@@ -1,6 +1,6 @@
-export 'package:quizics/ui/columnDisplayer.dart' show ColumnDisplayer;
+export 'package:quizics/common/ui/columnDisplayer.dart' show ColumnDisplayer;
 import 'package:flutter/material.dart';
-import 'package:quizics/ui/pageListArguments.dart' show PageListArguments;
+import 'package:quizics/common/ui/pageListArguments.dart' show PageListArguments;
 
 class ColumnDisplayer extends StatelessWidget{
   final List<String> titleList;

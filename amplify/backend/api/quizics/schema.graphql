@@ -1,0 +1,41 @@
+enum QuestionType {
+  MULTIPLE_ANSWER
+  WRITE_IN
+}
+
+type Question @model @auth(rules: [
+    { allow: public, operations: [read] },       # Public read access
+    { allow: owner, operations: [create, update, delete] }  # Owner-based write access
+]){
+  id: ID!
+  description: String!
+  title: String!
+  type: QuestionType!
+  score: Int!
+  imageKey: String
+  questionNum: Int!
+  lessonId: ID!
+  lesson: Lesson @belongsTo(fields: ["lessonId"])
+}
+
+type Lesson @model @auth(rules: [
+    { allow: public, operations: [read] },       # Public read access
+    { allow: owner, operations: [create, update, delete] }  # Owner-based write access
+]) {
+    id: ID!
+    description: String!
+    title: String!
+    subjectId: ID!
+    subject: Subject @belongsTo(fields: ["subjectId"])
+    questions: [Question] @hasMany(indexName: "byLesson", fields: ["id"])
+}
+
+type Subject @model @auth(rules: [
+    { allow: public, operations: [read] },       # Public read access
+    { allow: owner, operations: [create, update, delete] }  # Owner-based write access
+]) {
+    id: ID!
+    description: String!
+    title: String!
+    lessons: [Lesson] @hasMany(indexName: "bySubject", fields: ["id"])
+}

@@ -17,6 +17,9 @@
       },
       "storage": {
         "s3cee088b0": {}
+      },
+      "api": {
+        "quizics": {}
       }
     }
   }

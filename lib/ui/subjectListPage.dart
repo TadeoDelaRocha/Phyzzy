@@ -1,7 +1,7 @@
 export 'package:quizics/ui/subjectListPage.dart' show SubjectListPage;
-import 'package:quizics/ui/pageListArguments.dart' show PageListArguments;
+import 'package:quizics/common/ui/pageListArguments.dart' show PageListArguments;
 import 'package:flutter/material.dart';
-import 'package:quizics/ui/columnDisplayer.dart';
+import 'package:quizics/common/ui/columnDisplayer.dart';
 
 class SubjectListPage extends StatelessWidget {
   static List<String> titleList = ["Math", "Physics", "Computer Science"];

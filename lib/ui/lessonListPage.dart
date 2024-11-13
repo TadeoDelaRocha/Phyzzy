@@ -1,7 +1,7 @@
 export 'package:quizics/ui/lessonListPage.dart' show LessonListPage;
-import 'package:quizics/ui/pageListArguments.dart' show PageListArguments;
+import 'package:quizics/common/ui/pageListArguments.dart' show PageListArguments;
 import 'package:flutter/material.dart';
-import 'package:quizics/ui/columnDisplayer.dart';
+import 'package:quizics/common/ui/columnDisplayer.dart';
 
 class LessonListPage extends StatelessWidget {
   static List<String> titleList = ["Lesson 1", "Lesson 2", "Lesson 3"];
